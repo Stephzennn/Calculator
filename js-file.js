@@ -43,5 +43,26 @@ function operate(a,string, b){
     return undefined
 }
 
+let buttonBox = document.querySelector(".buttonBox")
+//buttonBox.appendChild(newButtons)
 
-console.log(operate(5,"-", 90))
+let allOperationString = ["÷","n!",")","(","√x","×","9","8","7","xʸ","-","6","5","4","10ʸ","+","3","2","1","log", "=",".","0","+/-","ln"]
+
+   
+
+console.log(allOperationString.length)
+
+let counter = ((allOperationString.length) - 1);
+for (let ver = 0 ; ver < 5; ver++){
+    let newDiv = document.createElement("div")
+
+    for (let hori = 0; hori < 5; hori++){  
+        let newButtons = document.createElement('button')
+        newButtons.classList.add("numberButton")
+        newButtons.innerText = allOperationString[counter]
+        counter--
+        newDiv.appendChild(newButtons)
+    }
+    buttonBox.appendChild(newDiv)
+}
+

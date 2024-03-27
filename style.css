@@ -1,0 +1,44 @@
+.BoxTop1 {
+  border: black solid;
+  min-width: 400px;
+  min-height:  600px;
+  justify-content: center;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+}
+
+.buttonBox {
+  
+  border: black solid;
+  min-height: 65%;
+  min-width: 90%;
+  margin: 15px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.displayBox {
+  
+  border: black solid;
+  min-height: 25%;
+  min-width: 90%;
+  margin: 15px;
+}
+
+.numberButton{
+  border: black solid;
+  margin: 9px;
+  margin-left: 3px;
+  margin-right: 3px;
+  height: 60px;
+  width: 80px;
+  border-radius: 5px;
+  font-size: 29px;
+}
