@@ -46,11 +46,10 @@ function operate(a,string, b){
 let buttonBox = document.querySelector(".buttonBox")
 //buttonBox.appendChild(newButtons)
 
-let allOperationString = ["÷","n!",")","(","√x","×","9","8","7","xʸ","-","6","5","4","10ʸ","+","3","2","1","log", "=",".","0","+/-","ln"]
+let allOperationString = ["÷","CE",")","(","√x","×",9,8,7,"xʸ","-",6,5,4,"10ʸ","+",3,2,1,"log", "=",".",0,"+/-","ln"]
 
    
 
-console.log(allOperationString.length)
 
 let counter = ((allOperationString.length) - 1);
 for (let ver = 0 ; ver < 5; ver++){
@@ -60,9 +59,27 @@ for (let ver = 0 ; ver < 5; ver++){
         let newButtons = document.createElement('button')
         newButtons.classList.add("numberButton")
         newButtons.innerText = allOperationString[counter]
+        newButtons.id = allOperationString[counter]
         counter--
         newDiv.appendChild(newButtons)
     }
     buttonBox.appendChild(newDiv)
 }
 
+let firstString = ""
+let secondString = "0"
+
+let innerDisplay1 = document.querySelector(".innerDisplay1")
+let innerDisplay2 = document.querySelector(".innerDisplay2")
+
+
+
+function clear(){
+    firstString = ""
+    secondString = "0"
+    innerDisplay1.textContent = firstString
+    innerDisplay2.textContent = secondString
+}
+
+let ce = document.querySelector("#CE")
+ce.addEventListener('click',clear)
