@@ -99,7 +99,7 @@ for (let ver = 0 ; ver < 5; ver++){
 
 
 
-let innerDisplay1 = document.querySelector(".innerDisplay1")
+let innerDisplay1 = document.querySelector(".innerwords")
 let innerDisplay2 = document.querySelector(".innerDisplay2")
 
 let firstString = innerDisplay1.textContent
@@ -205,6 +205,9 @@ arr.forEach(function (item){
                 console.log(operationsPlus[0])
                 
                 leftNumber = operate(leftNumber,operationsPlus[0], rightNumber)
+                if (leftNumber == Infinity){
+                    leftNumber = "Wrong Input"
+                }
                 console.log(rightNumber)
                 console.log(leftNumber)
                 operationsPlus.shift()
@@ -237,8 +240,17 @@ arr.forEach(function (item){
 classArray.forEach(function (item){
 
     let operand = document.querySelector("." + item)
+    operand.addEventListener("mousedown", () => {
+        operand.classList.add("clickStyle")
+    })
+    operand.addEventListener("mouseup", () => {
+        operand.classList.remove("clickStyle")
+    })
     operand.addEventListener('click',() => {
         console.log("item")
+        
+        
+        
         if(firstString.length == 0){
             firstString += operand.textContent 
             firstString += " "
@@ -275,3 +287,10 @@ classArray.forEach(function (item){
         
     })
 })
+
+
+
+let oper = document.querySelector(".ln")
+
+oper.classList.add("clickStyle")
+

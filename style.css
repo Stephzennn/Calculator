@@ -1,4 +1,5 @@
 .BoxTop1 {
+  border-radius: 9px;
   border: black solid;
   min-width: 400px;
   min-height:  600px;
@@ -25,7 +26,7 @@ body{
 }
 
 .displayBox {
-  
+  border-radius: 9px;
   border: black solid;
   min-height: 25%;
   min-width: 90%;
@@ -33,10 +34,20 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 425px;
+  
+}
+
+.innerwords {
+  display: flex;
+  flex-shrink: 1;
+  max-width: 100%;
+  font-size: 2cqw;
+  text-wrap: wrap;
 }
 
 .innerDisplay1, .innerDisplay2 {
-  border: black solid;
+  
   min-height: 30%;
   min-width: 90%;
   display: flex;
@@ -47,8 +58,21 @@ body{
 }
 
 .innerDisplay1 {
+  border-bottom:grey solid;
+  border-bottom-width: 1px;
   align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  flex-shrink: 1;
+  overflow: hidden;
 }
+
+.innerDisplay2 {
+  border-top:grey solid;
+  border-top-width: 1px;
+}
+
 .numberButton{
   border: black solid;
   border-width: 1px;
@@ -60,4 +84,9 @@ body{
   border-radius: 5px;
   font-size: 29px;
 
+}
+
+.clickStyle {
+  color: white;
+  background-color: black;
 }
