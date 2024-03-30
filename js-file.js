@@ -151,7 +151,14 @@ arr.forEach(function (item){
 
     //=====
 
+    operators.addEventListener("mouseenter", () => {
+        operators.classList.add("hoverStyle")
+    })
 
+    operators.addEventListener("mouseleave", () => {
+        operators.classList.remove("hoverStyle")
+    })
+    
     operators.addEventListener("mousedown", () => {
         operators.classList.add("clickStyle")
     })
@@ -255,6 +262,15 @@ classArray.forEach(function (item){
     })
     operand.addEventListener("mouseup", () => {
         operand.classList.remove("clickStyle")
+
+    })
+
+    operand.addEventListener("mouseenter", () => {
+        operand.classList.add("hoverStyle")
+    })
+
+    operand.addEventListener("mouseleave", () => {
+        operand.classList.remove("hoverStyle")
     })
     operand.addEventListener('click',() => {
         console.log("item")
