@@ -148,6 +148,16 @@ arr.forEach(function (item){
     }
     core = "." + core;
     let operators = document.querySelector(core)
+
+    //=====
+
+
+    operators.addEventListener("mousedown", () => {
+        operators.classList.add("clickStyle")
+    })
+    operators.addEventListener("mouseup", () => {
+        operators.classList.remove("clickStyle")
+    })
     operators.addEventListener('click',() => {
     
     if (firstString[((firstString.length) - 2)] != "="){

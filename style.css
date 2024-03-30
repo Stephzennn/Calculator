@@ -1,12 +1,17 @@
 .BoxTop1 {
   border-radius: 9px;
   border: black solid;
+  border-width: 0.5px;
   min-width: 400px;
   min-height:  600px;
   justify-content: center;
   margin-top: 100px;
   display: flex;
   flex-direction: column-reverse;
+  transform-style: preserve-3d;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  background-color:grey;
+  
 }
 
 body{
@@ -35,7 +40,7 @@ body{
   flex-direction: column;
   justify-content: center;
   max-width: 425px;
-  
+  background-color: white;
 }
 
 .innerwords {
@@ -58,8 +63,7 @@ body{
 }
 
 .innerDisplay1 {
-  border-bottom:grey solid;
-  border-bottom-width: 1px;
+  
   align-items: flex-end;
   display: flex;
   flex-wrap: wrap;
@@ -89,4 +93,6 @@ body{
 .clickStyle {
   color: white;
   background-color: black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-underline-position: below;
 }
