@@ -23,6 +23,7 @@ let leftNumber = 0;
 let operator = "";
 let rightNumber = 0;
 
+let tempNumberr = 0;
 
 function operate(a,string, b){
     
@@ -32,9 +33,9 @@ function operate(a,string, b){
             
         case "-":
             return subtract(a,b);
-        case "*":
+        case "×":
             return multiply(a,b);
-        case "/":
+        case "÷":
             return divide(a,b);
         default:
             break
@@ -51,7 +52,8 @@ let allClasses = ["÷","CE","rightBraket","leftBracket","Radical","×","nine","e
 "five","four","tenPower","+","three","two","one","log", "=","point","zero","changeSign","ln"]
 
    
-
+let operationsPlus = [];
+let operationsPlusIndex = [];
 
 let counter = ((allOperationString.length) - 1);
 for (let ver = 0 ; ver < 5; ver++){
@@ -102,12 +104,14 @@ let innerDisplay2 = document.querySelector(".innerDisplay2")
 
 let firstString = innerDisplay1.textContent
 let secondString = innerDisplay2.textContent
-
+let switchh = false;
 function clear(){
     firstString = ""
     secondString = "0"
     innerDisplay1.textContent = firstString
     innerDisplay2.textContent = secondString
+    operationsPlus = []
+    operationsPlusIndex = []
 }
 function replaceAt(string, index, replacement) {
     return string.substr(0, index) + replacement + string.substr(index + replacement.length);
@@ -145,18 +149,22 @@ arr.forEach(function (item){
     core = "." + core;
     let operators = document.querySelector(core)
     operators.addEventListener('click',() => {
-    console.log(firstString)
     
-    console.log(firstString[firstString.length - 2])
     if (firstString[((firstString.length) - 2)] != "="){
         if (firstString.length == 0){
             console.log(firstString) 
             firstString += "0 " 
             firstString += operators.textContent
-            firstString += "_"
+            firstString += " "
         }
         else if (   ["+","-","÷","×"].includes(firstString[((firstString.length) - 2)])){
-            if(   ["+","-","÷","×"].includes(operators.textContent)) {
+            operationsPlus.pop()
+            operationsPlusIndex.pop()
+            operationsPlus.push(operators.textContent)
+            operationsPlusIndex.push((firstString.length) - 2)
+            console.log("Here is to find the left side")
+            console.log(firstString.textContent)
+            if(   ["+","-","÷","×","="].includes(operators.textContent)) {
                 
                 if (firstString[((firstString.length) - 2)] != operators.textContent) {
 
@@ -171,11 +179,51 @@ arr.forEach(function (item){
             
         }
         else if (   ["="].includes(firstString[((firstString.length) - 2)])){
-    
+            switchh == true
+
         }
         else {
+
             firstString += operators.textContent
-            firstString += "_"
+            firstString += " "
+            console.log("Here is to find if the click is an operation")
+            tempNumberr = leftNumber;
+            leftNumber = tempNumberr
+            tempNumberr = 0
+            operationsPlus.push((firstString.substring(((firstString.length - 2)),(firstString.length - 1))))
+            operationsPlusIndex.push((firstString.length) - 2)
+            console.log(operationsPlus)
+            console.log(operationsPlusIndex)
+            if (operationsPlus.length == 2){
+                console.log("This is the right")
+                console.log(operationsPlusIndex[((operationsPlusIndex.length) - 2)])
+
+                let g = (((operationsPlusIndex[((operationsPlusIndex.length) - 2)])) + 2)
+                rightNumber = parseInt(firstString.substring(g,(firstString.length - 3)))
+                //leftNumber = rightNumber
+                
+                console.log(operationsPlus[0])
+                
+                leftNumber = operate(leftNumber,operationsPlus[0], rightNumber)
+                console.log(rightNumber)
+                console.log(leftNumber)
+                operationsPlus.shift()
+                operationsPlusIndex.shift()
+                console.log(operationsPlus)
+                console.log(operationsPlusIndex)
+                secondString = leftNumber
+                innerDisplay2.textContent = secondString
+
+            }
+            else {
+                console.log("check operationplus == 1, and check firststring")
+                console.log(firstString)
+                leftNumber = parseInt(firstString.substring(0, (operationsPlusIndex[0] - 1)))
+                secondString = leftNumber
+                innerDisplay2.textContent = secondString
+
+            }   
+            tempNumberr =  parseInt(firstString.substring(0,(firstString.length - 1)));
         }
     }
     
@@ -190,27 +238,34 @@ classArray.forEach(function (item){
 
     let operand = document.querySelector("." + item)
     operand.addEventListener('click',() => {
-        
+        console.log("item")
         if(firstString.length == 0){
             firstString += operand.textContent 
-            firstString += "_"
+            firstString += " "
             
         }
         else if (   ["="].includes(firstString[((firstString.length) - 2)])){
-    
+            switchh == true
         }   
         else{
+
+            console.log("here")
+            if (arr.includes(operand.textContent)){
+                leftNumber = parseInt(firstString.substring(0,(firstString.length - 1)))
+                
+                console.log(leftNumber)
+            }
             
             if ((arrNumber.includes(parseInt(operand.textContent))) && (arrNumber.includes(parseInt(firstString[firstString.length - 2] )))){
                 
                 firstString = firstString.substring(0,(firstString.length - 1))
                 console.log(firstString)
                 firstString += operand.textContent
-                firstString += "_"
+                firstString += " "
             }
             else{
                 firstString += operand.textContent
-                firstString += "_"
+                firstString += " "
             }
             
             
